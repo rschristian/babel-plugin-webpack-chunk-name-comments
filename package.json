@@ -1,6 +1,6 @@
 {
   "name": "@rschristian/babel-plugin-webpack-chunk-name-comments",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "main": "index.js",
   "license": "MIT",
   "description": "Babel plugin used to generate Webpack magic comments on dynamic import statements",
