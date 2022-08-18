@@ -1,7 +1,12 @@
 {
   "name": "@rschristian/babel-plugin-webpack-chunk-name-comments",
   "version": "0.1.1",
-  "main": "index.js",
+  "type": "module",
+  "main": "./index.cjs",
+  "exports": {
+    "import": "./index.js",
+    "require": "./index.cjs"
+  },
   "license": "MIT",
   "description": "Babel plugin used to generate Webpack magic comments on dynamic import statements",
   "repository": "https://github.com/rschristian/babel-plugin-webpack-chunk-name-comments",
@@ -14,11 +19,14 @@
   ],
   "files": [
     "index.js",
+    "index.cjs",
     "LICENSE",
     "package.json",
     "README.md"
   ],
   "scripts": {
+    "prepublishOnly": "yarn build",
+    "build": "node scripts/build.js",
     "test": "uvu tests",
     "format": "prettier --write --ignore-path .gitignore ."
   },

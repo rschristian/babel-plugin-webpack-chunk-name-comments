@@ -33,7 +33,7 @@ function hasComment(comment) {
  * @param {import('@babel/core')} babel
  * @returns {import('@babel/core').PluginObj}
  */
-module.exports = function webpackChunkNameCommentsPlugin({ types: t }) {
+export default function webpackChunkNameCommentsPlugin({ types: t }) {
     return {
         name: 'webpack-chunk-name-comments',
         visitor: {
