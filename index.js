@@ -9,6 +9,13 @@
 // https://www.npmjs.im/babel-plugin-dynamic-import-chunk-name
 // MIT Licensed: https://www.runpkg.com/?babel-plugin-dynamic-import-chunk-name@1.0.0/LICENSE
 
+
+function removeTrailingIndex(string) {
+    return string.split('-').length - 1 > 1
+        ? string.replace(/-index$/, '')
+        : string;
+}
+
 function convertToKebabCase(string) {
     return string
         .replace(/([a-z])([A-Z])/g, '$1-$2')
@@ -17,12 +24,14 @@ function convertToKebabCase(string) {
 }
 
 function getChunkName(filename) {
-    return filename
+	filename = filename
         .split('/')
         .map((part) => part.replace(/\..*$/, ''))
         .filter(Boolean)
         .map(convertToKebabCase)
         .join('-');
+
+	return removeTrailingIndex(filename);
 }
 
 function hasComment(comment) {

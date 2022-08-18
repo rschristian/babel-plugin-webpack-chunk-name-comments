@@ -20,9 +20,28 @@ test('Handles simple module paths', () => {
 });
 
 test('Handles nested module paths', () => {
-    const input = 'import("./a/b.js")';
-    const result = transformHelper(input);
+    let input = 'import("./a/b.js")';
+    let result = transformHelper(input);
     assert.equal(result.code, 'import(\n/*webpackChunkName: "a-b"*/\n"./a/b.js");');
+
+    input = 'import("./a/b/c.js")';
+    result = transformHelper(input);
+    assert.equal(result.code, 'import(\n/*webpackChunkName: "a-b-c"*/\n"./a/b/c.js");');
+});
+
+// We only want to strip `-index` if more than a couple layers deep
+test('Handles nested module paths ending with `-index`', () => {
+    let input = 'import("./index.js")';
+    let result = transformHelper(input);
+    assert.equal(result.code, 'import(\n/*webpackChunkName: "index"*/\n"./index.js");');
+
+    input = 'import("./a/index.js")';
+    result = transformHelper(input);
+    assert.equal(result.code, 'import(\n/*webpackChunkName: "a-index"*/\n"./a/index.js");');
+
+    input = 'import("./a/b/index.js")';
+    result = transformHelper(input);
+    assert.equal(result.code, 'import(\n/*webpackChunkName: "a-b"*/\n"./a/b/index.js");');
 });
 
 test('Handles camelCased module paths', () => {
