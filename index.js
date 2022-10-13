@@ -1,10 +1,8 @@
-// Modified from `babel-plugin-dynamic-import-chunk-name` as it resulted
-//
-// It used a slightly different naming system than what we wanted. Using the
-// plugin and correcting the names after the fact would be more effor than
-// forking. Additionally, the plugin does not have source code available online.
-// While we're unlikely to run into issues, having a way to create fixes ourselves
-// would be beneficial.
+// Modified from `babel-plugin-dynamic-import-chunk-name` as it used a slightly
+// different naming system than what we wanted. Using the plugin and correcting
+// the names after the fact would be more effort than forking. Additionally, the
+// plugin does not have source code available online. While we're unlikely to run
+// into issues, having a way to create fixes ourselves would be beneficial.
 //
 // https://www.npmjs.im/babel-plugin-dynamic-import-chunk-name
 // MIT Licensed: https://www.runpkg.com/?babel-plugin-dynamic-import-chunk-name@1.0.0/LICENSE
